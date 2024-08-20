@@ -2,13 +2,16 @@ defmodule DNSCluster do
   @moduledoc """
   Simple DNS based cluster discovery.
 
-  A DNS query is made every `:interval` milliseconds to discover new ips.
+  A DNS query is made every `:interval` milliseconds to discover new ips. The
+  name of the node should be `myapp@ip-address`: DNS host names may not work.
   Nodes will only be joined if their node basename matches the basename of the
-  current node. For example if `node()` is `myapp-123@fdaa:1:36c9:a7b:198:c4b1:73c6:1`,
-  a `Node.connect/1` attempt will be made against every IP returned by the DNS query,
-  but will only be successful if there is a node running on the remote host with the same
-  basename, for example `myapp-123@fdaa:1:36c9:a7b:198:c4b1:73c6:2`. Nodes running on
-  remote hosts, but with different basenames will fail to connect and will be ignored.
+  current node. For example if `node()` is
+  `myapp-123@fdaa:1:36c9:a7b:198:c4b1:73c6:1`, a `Node.connect/1` attempt will
+  be made against every IP returned by the DNS query, but will only be
+  successful if there is a node running on the remote host with the same
+  basename, for example `myapp-123@fdaa:1:36c9:a7b:198:c4b1:73c6:2`. Nodes
+  running on remote hosts, but with different basenames will fail to connect and
+  will be ignored.
 
   ## Examples
 

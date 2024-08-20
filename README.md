@@ -31,7 +31,7 @@ the node must be named. These can be set in your `rel/env.sh.eex` file:
 ```sh
 #!/bin/sh
 export RELEASE_DISTRIBUTION=name
-export RELEASE_NODE="myapp@fully-qualified-host-or-ip"
+export RELEASE_NODE="myapp@ip-address"
 ```
 
 By default, nodes from the same release will have the same cookie. If you want different
